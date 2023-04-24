@@ -1,5 +1,4 @@
-
-
+--View covid death columns 
 Select Location, date, total_cases, new_cases, total_deaths, population
 From Portfolio_Yuen..CovidDeaths
 order by 1,2
@@ -100,8 +99,7 @@ JOIN Portfolio_Yuen..CovidVaccinations vac
 Select * RollingPeopleVaccinated/Population)*100
 From #PercentPopulationVaccinated
 
---Creating View to store data for visualizations 
-
+--Creating View to store data for Tableau visualizations 
 Create View PercentPopulationVaccinated as 
 Select dea.continent, dea.location, dea.date, dea.population, vac.new_vaccinations,
 	SUM(CONVERT(bigint, vac.new_vaccinations)) OVER (Partition by dea.location Order 
